@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
+import NavBar from './NavBar';
+import Info from './Info';
+import Player from './Player';
+import Counter from './Counter'
 import './App.css';
-import NavBar from './NavBar'
-import ShowCase from './ShowCase'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <NavBar />
-        <ShowCase />
+        <Info />
+        <Player />
+        <Counter />
       </div>
     );
   }
