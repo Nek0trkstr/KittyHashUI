@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
-import Branding from './Branding';
+
 import './NavBar.css'
-import Info from './Info';
 
 class NavBar extends Component {
     render(){
         return(
             <div className="NavBar">
                 <h1>LOGO</h1>
-                <div>
-                    <button>About</button>
-                    <button>Contact</button>
+                <div id="navButtons">
+                    <button  autofocus="true" onClick={() => this.props.handleMenuClick('about')}>About</button>
+                    <button onClick={() => this.props.handleMenuClick('contact')}>Contact</button>
                 </div>
             </div>
             
