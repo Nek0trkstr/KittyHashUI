@@ -6,15 +6,28 @@ import Counter from './Counter'
 import './App.css';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      textToDisplay: 'about'
+    };
+    this.menuClick = this.menuClick.bind(this);
+  }
   render() {
     return (
       <div className="App">
-        <NavBar />
-        <Info />
+        <NavBar handleMenuClick={this.menuClick}/>
+        <Info textToDisplay={this.state.textToDisplay}/>
         <Player />
         <Counter />
       </div>
     );
+  }
+
+  menuClick(i_TextToDisplay){
+    this.setState((prevState) => {
+      return {textToDisplay: i_TextToDisplay};
+    })
   }
 }
 

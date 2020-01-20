@@ -4,6 +4,28 @@
 
 #playButton {
     border-radius: 50%;
-    height: 150px;
-    width: 150px;
+    height: 280px;
+    width: 280px;
+    background: linear-gradient(-45deg, #ff9999, #996699, #663399, #333366);
+    background-size: 400% 400%;
+    position: relative;
+    border: none;
+    font-family: inherit;
+}
+
+#playButton:focus {
+    outline: 0;
+    animation: playMusic 10s ease-in-out;
+}
+
+@keyframes playMusic {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
 }
