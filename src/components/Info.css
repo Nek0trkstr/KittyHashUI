@@ -10,6 +10,7 @@
 #brandInfo{
     border-left: 30px solid #9e579d;
     align-self: flex-start;
+    animation: moveIn 0.6s ease-out;
 }
 
 #brandName {
@@ -21,19 +22,6 @@
     font-size: 48px;
     opacity: 0.75;
     margin: 0 0 0 20px;
-}
-
-#aboutText {
-    width: 750px;
-    font-size: 36px;
-    opacity: 0.75;
-    margin: 0 50px 0 0;
-}
-
-#aboutText p {
-    margin: 0;
-    text-align: right;
-    animation: 1.2s ease-in 0s fadein; 
 }
 
 @keyframes fadeInOut {
@@ -49,4 +37,15 @@
 @keyframes fadein {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+@keyframes moveIn {
+  from { 
+    transform: translateX(-30px);
+    opacity: 0.2;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
 }

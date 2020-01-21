@@ -11,11 +11,16 @@
     position: relative;
     border: none;
     font-family: inherit;
+    animation: playMusic 10s infinite ease-in-out;
+    animation-play-state: paused;
 }
 
 #playButton:focus {
     outline: 0;
-    animation: playMusic 10s ease-in-out;
+}
+
+#playButton i {
+    color: #303a52;
 }
 
 @keyframes playMusic {
