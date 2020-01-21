@@ -1,5 +1,7 @@
-import React, {Component} from 'react'
-import './Info.css'
+import React, {Component} from 'react';
+import AnimatedText from './AnimatedText';
+import './Info.css';
+
 class Info extends Component {
 
     constructor(){
@@ -17,9 +19,7 @@ class Info extends Component {
                     <h2 id="brandName">KittyHash</h2>
                     <h2 id="brandSlogan">Listen to music - help nature</h2>
                 </div>
-                <div id="aboutText">
-                    {this.activeButtonToElement[this.props.textToDisplay]}
-                </div>
+                <AnimatedText key={new Date().getTime()} textToDisplay={this.activeButtonToElement[this.props.textToDisplay]} />
             </div>
         )
     }

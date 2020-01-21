@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar handleMenuClick={this.menuClick}/>
+        <NavBar textToDisplay={this.state.textToDisplay} handleMenuClick={this.menuClick}/>
         <Info textToDisplay={this.state.textToDisplay}/>
         <Player />
         <Counter />
