@@ -1,5 +1,11 @@
-p {
+#counter {
+    display: flex;
+    flex-grow: 1;
+}
+
+#counter p {
     color: #e8e8eb;
     font-size: '24px';
     opacity: 0.75;
+    align-self: flex-end;
 }
