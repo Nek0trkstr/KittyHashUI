@@ -4,7 +4,7 @@ import './Counter.css';
 class Counter extends Component{
     render(){
         return(
-            <div>
+            <div id="counter">
                 <p>Currently streaming: <span>347</span></p>
             </div>
         )
