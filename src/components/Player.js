@@ -3,7 +3,7 @@ import './Player.css'
 class Player extends Component {
     constructor(){
         super()
-        this.audioController = <audio preload="none" id="playerController" src="http://localhost/basic-radio.ogg"><p> Your browser doesnt support audio player</p></audio>
+        this.audioController = <audio id="playerController" src="http://localhost:8000/basic-radio"><p> Your browser doesnt support audio player</p></audio>
         this.switchPlayPause = this.switchPlayPause.bind(this)
     }
     render() {
@@ -11,6 +11,8 @@ class Player extends Component {
             <div className="player">
                 {this.audioController}
                 <button id='playButton' onClick={this.switchPlayPause}><i className="fas fa-play fa-7x"></i></button>
+                <h1 id="songTitle">{this.props.songTitle}</h1>
+                <h2 id="songArtist">{this.props.songArtist}</h2>
             </div>
         )
     }

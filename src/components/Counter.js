@@ -5,7 +5,7 @@ class Counter extends Component{
     render(){
         return(
             <div id="counter">
-                <p>Currently streaming: <span>347</span></p>
+                <p>Currently streaming: <span>{this.props.currentlyListening}</span></p>
             </div>
         )
     }
