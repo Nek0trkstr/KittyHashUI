@@ -1,3 +1,8 @@
+.player{
+    color: #e8e8eb;
+    text-align: center;
+}
+
 .Player audio{
     display: block;
 }
@@ -33,4 +38,13 @@
     100% {
         background-position: 0 50%;
     }
+}
+
+#songTitle {
+    font-size: 36px;
+}
+
+#songArtist {
+    color: #e8e8eb;
+    opacity: 0.75;
 }

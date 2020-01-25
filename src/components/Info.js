@@ -3,7 +3,6 @@ import AnimatedText from './AnimatedText';
 import './Info.css';
 
 class Info extends Component {
-
     constructor(){
         super();
         this.activeButtonToElement = { 
@@ -12,6 +11,7 @@ class Info extends Component {
             'contact':  <p>Yo yo contact me!!!</p>
         }
     }
+
     render() {
         return(
             <div id="Info">
@@ -19,7 +19,7 @@ class Info extends Component {
                     <h2 id="brandName">KittyHash</h2>
                     <h2 id="brandSlogan">Listen to music - help nature</h2>
                 </div>
-                <AnimatedText key={new Date().getTime()} textToDisplay={this.activeButtonToElement[this.props.textToDisplay]} />
+                <AnimatedText textToDisplay={this.activeButtonToElement[this.props.textToDisplay]} />
             </div>
         )
     }
