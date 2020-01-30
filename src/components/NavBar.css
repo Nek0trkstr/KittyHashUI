@@ -1,17 +1,17 @@
-.NavBar{
+#navBar{
     color: #e8e8eb;
-    height: 100px;
+    height: 50px;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-between;
     width: 100%;
-    margin: 0 0 50px 0;
+    margin: 10px 0 20px 0;
 }
 
-.NavBar h1 {
+#navBar h1 {
     margin: 0 0 0 50px;
-    font-size: 60px;
+    font-size: 1.5em;
 }
 
 #navButtons {
@@ -26,7 +26,7 @@
     padding: 0;
     cursor: pointer;
     font-family: inherit;
-    font-size: 48px;
+    font-size: 1em;
 }
 
 #navButtons button:focus{
