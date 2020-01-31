@@ -16,7 +16,7 @@ function NavBar({ textToDisplay, handleMenuClick }) {
 }
 
 NavBar.propTypes = {
-  textToDisplay: PropTypes.instanceOf(TextType).isRequired,
+  textToDisplay: PropTypes.symbol.isRequired,
   handleMenuClick: PropTypes.func.isRequired,
 };
 

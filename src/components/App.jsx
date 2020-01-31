@@ -1,8 +1,8 @@
 import React from 'react';
 import NavBar from './NavBar';
 import AppBody from './AppBody';
-import './App.css';
 import TextType from '../TextTypeEnum';
+import './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -14,9 +14,7 @@ class App extends React.Component {
   }
 
   menuClick(textToDisplay) {
-    this.setState(() => { 
-      return ({textToDisplay: textToDisplay});
-    });
+    this.setState({ textToDisplay });
   }
 
   render() {
