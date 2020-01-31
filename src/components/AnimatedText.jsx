@@ -11,7 +11,7 @@ function AnimatedText({ textToDisplay }) {
 }
 
 AnimatedText.propTypes = {
-  textToDisplay: PropTypes.string.isRequired,
+  textToDisplay: PropTypes.element.isRequired,
 };
 
 export default AnimatedText;

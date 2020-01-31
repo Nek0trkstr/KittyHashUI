@@ -4,7 +4,6 @@ import Info from './Info';
 import Player from './Player';
 import Counter from './Counter';
 import './AppBody.css';
-import TextType from '../TextTypeEnum';
 
 class AppBody extends React.Component {
   static parseMetadata(jsonMetadata) {
@@ -26,7 +25,7 @@ class AppBody extends React.Component {
     this.state = {
       songTitle: 'Loading',
       songArtist: 'Loading',
-      currentlyListening: '',
+      currentlyListening: 0,
     };
     this.pollingInterval = 5000;
     this.radioMetadataURL = `http://${window.location.hostname}/status-json.xsl`;
@@ -43,20 +42,18 @@ class AppBody extends React.Component {
       .then((res) => res.json())
       .then((jsonMetadata) => this.constructor.parseMetadata(jsonMetadata))
       .then((parsedData) => {
-        this.setState(() => {
-          return ({
-            songTitle: parsedData.songTitle,
-            songArtist: parsedData.songArtist,
-            currentlyListening: parsedData.currentlyListening,
-          });
+        this.setState({
+          songTitle: parsedData.songTitle,
+          songArtist: parsedData.songArtist,
+          currentlyListening: parsedData.currentlyListening,
         });
-      });
+      })
+      .catch((err) => console.log(`Error occured while polling metadata ${err}`));
   }
 
   render() {
-    const { textToDisplay, songArtist, songTitle } = this.props;
-    console.log(textToDisplay, songArtist, songTitle);
-    const { currentlyListening } = this.state;
+    const { textToDisplay } = this.props;
+    const { currentlyListening, songArtist, songTitle } = this.state;
     return (
       <div id="appBody">
         <Info textToDisplay={textToDisplay} />
@@ -68,9 +65,7 @@ class AppBody extends React.Component {
 }
 
 AppBody.propTypes = {
-  textToDisplay: PropTypes.instanceOf(TextType).isRequired,
-  songArtist: PropTypes.string.isRequired,
-  songTitle: PropTypes.string.isRequired,
+  textToDisplay: PropTypes.symbol.isRequired,
 };
 
 export default AppBody;

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Player.css';
@@ -5,34 +6,33 @@ import './Player.css';
 class Player extends React.Component {
   constructor() {
     super();
+    this.state = {
+      isPlaying: false,
+    };
     this.radioURL = `http://${window.location.hostname}/basic-radio`;
-    this.audioController = <audio id="playerController" src={this.radioURL}><p> Your browser doesnt support audio player</p></audio>;
-    this.switchPlayPause = this.switchPlayPause.bind(this);
+    this.audioController = new Audio(this.radioURL);
+    this.playStream = this.playStream.bind(this);
+    this.stopStream = this.stopStream.bind(this);
   }
 
-  switchPlayPause() {
-    const playerController = document.getElementById('playerController');
-    const playerButton = document.getElementById('playButton');
-    if (playerController.paused) {
-      playerButton.style.animationPlayState = 'running';
-      playerButton.innerHTML = '<i class="fas fa-pause fa-7x"></i>';
-      playerController.src = this.radioURL;
-      playerController.play();
-    } else {
-      playerButton.style.animationPlayState = 'paused';
-      playerButton.classList.remove('playButtonAnimated');
-      playerButton.innerHTML = '<i class="fas fa-play fa-7x"></i>';
-      playerController.pause();
-      playerController.src = '';
-    }
+  playStream() {
+    this.setState({ isPlaying: true });
+    this.audioController.src = this.radioURL;
+    this.audioController.play();
+  }
+
+  stopStream() {
+    this.setState({ isPlaying: false });
+    this.audioController.pause();
+    this.audioController.src = '';
   }
 
   render() {
     const { songTitle, songArtist } = this.props;
+    const { isPlaying } = this.state;
     return (
       <div className="player">
-        {this.audioController}
-        <button id="playButton" aria-label="Play Button" type="button" onClick={this.switchPlayPause}><i className="fas fa-play fa-7x" /></button>
+        <button id="playButton" aria-label="Play Button" type="button" onClick={isPlaying ? this.stopStream : this.playStream}><i className={isPlaying ? "fas fa-pause fa-7x" : "fas fa-play fa-7x"} /></button>
         <h1 id="songTitle">{songTitle}</h1>
         <h2 id="songArtist">{songArtist}</h2>
       </div>
