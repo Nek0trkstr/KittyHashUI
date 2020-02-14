@@ -4,9 +4,10 @@ node_js:
   - 12
 
 before_script:
-  - npm i --prefix ./ui/
-  - npm run-script build --prefix ./ui/
   - cd ui
+  - npm i
+  - npm run-script build
+  
 
 after_success:
   - cd ui
@@ -18,4 +19,4 @@ jobs:
     - services:
         - docker
       script:
-        - docker build ./ui/ -f ./ui/Dockerfile
+        - docker build .
