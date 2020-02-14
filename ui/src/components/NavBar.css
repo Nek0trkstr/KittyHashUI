@@ -1,0 +1,40 @@
+#navBar{
+    color: #e8e8eb;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0 20px 0;
+}
+
+#navBar h1 {
+    margin: 0 0 0 50px;
+    font-size: 1.5em;
+}
+
+#navButtons {
+    margin: 0 50px 0 0;
+}
+
+#navButtons button{
+    color: inherit;
+    background: none;
+    border: none;
+    margin: 0 0 0 40px;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1em;
+}
+
+#navButtons button:focus{
+    color:#9e579d;
+    outline:0;
+}
+
+#navButtons .buttonActive {
+    color:#9e579d;
+}
+
