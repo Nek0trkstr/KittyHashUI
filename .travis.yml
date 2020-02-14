@@ -4,6 +4,7 @@ node_js:
   - 12
 
 before_script:
+  - npm i --prefix ./ui/
   - npm run-script build --prefix ./ui/
 
 after_success:
