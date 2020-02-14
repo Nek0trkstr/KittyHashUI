@@ -6,6 +6,7 @@ node_js:
 before_script:
   - npm i --prefix ./ui/
   - npm run-script build --prefix ./ui/
+  - cd ui
 
 after_success:
   - cd ui
