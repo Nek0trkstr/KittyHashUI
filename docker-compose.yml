@@ -1,0 +1,27 @@
+version: '3'
+services:
+  reverse-proxy:
+    image: nginx:stable-alpine
+    volumes:
+    - ./reverse_proxy/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports: 
+    - "80:80"
+  ui:
+    build: ./ui
+    ports:
+    - "3000:80"
+  liquidsoap:
+    image: phasecorex/liquidsoap:latest
+    command: ["/playlist/script.liq"]
+    volumes:
+    - /Users/shebeko/Music/liquidsoap/:/music:ro
+    - ./liquidsoap/:/playlist/:ro
+    environment:
+    - TZ=Israel/Jerusalem
+  icecast:
+    image: infiniteproject/icecast:latest
+    environment:
+    - ICECAST_HOSTNAME=icecast
+    - ICECAST_SOURCE_PASSWORD=hackme
+    - ICECAST_ADMIN_USERNAME=admin
+    - ICECAST_ADMIN_PASSWORD=passw0rd

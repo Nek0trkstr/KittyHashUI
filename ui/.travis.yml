@@ -4,9 +4,10 @@ node_js:
   - 12
 
 before_script:
-  - npm run build
+  - npm run-script build --prefix ./ui/
 
 after_success:
+  - cd ui
   - npm i -g codecov
   - codecov
 
@@ -15,4 +16,4 @@ jobs:
     - services:
         - docker
       script:
-        - docker build . -t kittyhashui
+        - docker build ./ui/ -f ./ui/Dockerfile
