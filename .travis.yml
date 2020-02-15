@@ -3,21 +3,34 @@ node_js:
   - 11
   - 12
 
-before_script:
-  - cd ui
-  - npm i
-  - npm run-script build
-  
-
-after_success:
-  - cd ui
-  - npm i -g codecov
-  - codecov
-
 jobs:
   include:
+    - stage: Install Dependencies
+      script:
+        - cd ui
+        - npm ci
+    - stage: Lint
+      script:
+        - npm run-script lint
+    - stage: Test
+      script:
+        - npm test
     - stage: Test Docker
       services:
         - docker
       script:
         - docker build .
+
+# before_script:
+#   - cd ui
+#   - npm i
+#   - npm run-script build
+  
+# script:
+#   - npm run-script lint
+#   - npm test
+
+# after_success:
+#   - cd ui
+#   - npm i -g codecov
+#   - codecov
