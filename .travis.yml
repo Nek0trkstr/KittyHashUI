@@ -24,3 +24,7 @@ jobs:
         - docker
       script:
         - docker build .
+    - stage: Deploy
+      if: branch = master
+      script:
+        - echo 'deploy me'
