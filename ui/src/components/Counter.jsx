@@ -7,7 +7,9 @@ function Counter({ currentlyListening }) {
     <div id="counter">
       <p>
         Currently streaming:
-        <span>{currentlyListening}</span>
+        <span>
+          {` ${currentlyListening}`}
+        </span>
       </p>
     </div>
   );

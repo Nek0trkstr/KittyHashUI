@@ -8,6 +8,9 @@ before_script:
   - npm i
   - npm run-script build
   
+script:
+  - npm run-script lint
+  - npm test -- --coverage --watchAll=false
 
 after_success:
   - cd ui
@@ -16,7 +19,12 @@ after_success:
 
 jobs:
   include:
-    - services:
+    - stage: Test Docker
+      services:
         - docker
       script:
         - docker build .
+    - stage: Deploy
+      if: branch = master
+      script:
+        - echo 'deploy me'
