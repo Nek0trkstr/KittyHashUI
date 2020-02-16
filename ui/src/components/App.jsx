@@ -21,14 +21,14 @@ class App extends React.Component {
   }
 
   userConsentClick() {
-    this.setState({userConsentGiven: true});
+    this.setState({ userConsentGiven: true });
   }
 
   render() {
     const { textToDisplay, userConsentGiven } = this.state;
     return (
       <div className="App">
-        <Modal userConsentGiven={userConsentGiven} handleClick={this.userConsentClick}/>
+        <Modal userConsentGiven={userConsentGiven} handleClick={this.userConsentClick} />
         <NavBar textToDisplay={textToDisplay} handleMenuClick={this.menuClick} />
         <AppBody textToDisplay={textToDisplay} />
       </div>

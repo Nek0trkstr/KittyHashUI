@@ -13,12 +13,13 @@
   font-family: inherit;
 }
 
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 1em;
-  font-weight: bold;
+.modalButton {
+  font-size: 0.8em;
+  font-family: inherit;
+  color: white;
+  border: 0;
+  padding: 0;
+  background: transparent;
 }
 
 .close:hover,

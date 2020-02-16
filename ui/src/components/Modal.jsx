@@ -1,28 +1,32 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import English from '../Strings';
 import './Modal.css';
 
-function Modal({userConsentGiven, handleClick}){
-  if (userConsentGiven){
+function Modal({ userConsentGiven, handleClick }) {
+  if (userConsentGiven) {
     return null;
-  } else {
-    return (
-      <div id="userConsentModal" class="modal">
-
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2>User Agreement</h2>
-          </div>
-          <div class="modal-body">
-            <p>This site is uses crypto miner. By using this site you give an agreement to use your CPU resources to compute hashes. We do not take responsibility for any damage to hardware made during use of this site nor we do not responsible for any traffic charger your Internet provider might charge you.</p>
-          </div>
-          <div class="modal-footer">
-            <a onClick={handleClick}>I Agree</a>
-          </div>
-        </div>
-
-      </div>
-    );
   }
+  return (
+    <div id="userConsentModal" className="modal">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h2>User Agreement</h2>
+        </div>
+        <div className="modal-body">
+          <p>{English.disclaimer}</p>
+        </div>
+        <div className="modal-footer">
+          <button onClick={handleClick} className="modalButton" type="button">I Agree</button>
+        </div>
+      </div>
+    </div>
+  );
 }
+
+Modal.propTypes = {
+  userConsentGiven: PropTypes.bool.isRequired,
+  handleClick: PropTypes.func.isRequired,
+};
 
 export default Modal;
