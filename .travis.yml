@@ -12,7 +12,7 @@ jobs:
     - stage: Build
       script:
         - npm run-script build
-    - stage: Test
+    - stage: UnitTest
       script:
         - npm test -- --coverage --watchAll=false
         - npm i -g codecov
@@ -30,7 +30,7 @@ stages:
   - name: Install
   - name: Lint
   - name: Build
-  - name: Test
+  - name: UnitTest
     # require the type to be a PR
     if: type = pull_request
   - name: Deploy
