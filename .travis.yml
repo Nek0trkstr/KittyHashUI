@@ -1,4 +1,6 @@
 language: node_js
+node_js:
+  - 11
 
 jobs:
   include:
@@ -12,7 +14,7 @@ jobs:
     - stage: Build
       script:
         - npm run-script build
-    - stage: UnitTest
+    - stage: Unit Test
       script:
         - npm test -- --coverage --watchAll=false
         - npm i -g codecov
