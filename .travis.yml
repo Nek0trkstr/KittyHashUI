@@ -27,6 +27,9 @@ jobs:
         - echo 'deploy me'
 
 stages:
+  - name: Install
+  - name: Lint
+  - name: Build
   - name: Test
     # require the type to be a PR
     if: type = pull_request
