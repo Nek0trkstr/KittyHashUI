@@ -8,14 +8,12 @@ before_script:
 
 jobs:
   include:
-    - stage: Lint
-      script: 
-        - npm run-script lint
     - stage: Build
       script:
         - npm run-script build
     - stage: Test
       script:
+        - npm run-script lint
         - npm test -- --coverage --watchAll=false
         - npm i -g codecov
         - codecov
