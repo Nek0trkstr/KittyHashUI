@@ -3,15 +3,6 @@ node_js:
   - 11
   - 12
 
-before_script:
-  - cd ui
-  - npm i
-  - npm run-script build
-  
-script:
-  - npm run-script lint
-  - npm test -- --coverage --watchAll=false
-
 after_success:
   - cd ui
   - npm i -g codecov
@@ -19,12 +10,34 @@ after_success:
 
 jobs:
   include:
+    - stage: Install
+      script: 
+        - cd ui
+        - npm ci
+    - stage: Lint
+      script: 
+        - npm run-script lint
+    - stage: Build
+      script:
+        - npm run-script build
+    - stage: Test
+      script:
+        - npm test -- --coverage --watchAll=false
+        - npm i -g codecov
+        - codecov
     - stage: Test Docker
       services:
         - docker
       script:
         - docker build .
     - stage: Deploy
-      if: branch = master
       script:
         - echo 'deploy me'
+
+stages:
+  - name: Test
+    # require the type to be a PR
+    if: type = pull_request
+  - name: Deploy
+    # require the type to be push to master
+    if: type = push AND branch = master
