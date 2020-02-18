@@ -5,16 +5,6 @@ node_js:
 before_script:
   - cd ui
   - npm ci
-  - npm run-script build
-  
-script:
-  - npm run-script lint
-  - npm test -- --coverage --watchAll=false
-
-after_success:
-  - cd ui
-  - npm i -g codecov
-  - codecov
 
 jobs:
   include:
