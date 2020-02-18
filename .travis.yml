@@ -2,19 +2,29 @@ language: node_js
 node_js:
   - 11
 
+before_script:
+  - cd ui
+  - npm ci
+  - npm run-script build
+  
+script:
+  - npm run-script lint
+  - npm test -- --coverage --watchAll=false
+
+after_success:
+  - cd ui
+  - npm i -g codecov
+  - codecov
+
 jobs:
   include:
-    - stage: Install
-      script: 
-        - cd ui
-        - npm ci
     - stage: Lint
       script: 
         - npm run-script lint
     - stage: Build
       script:
         - npm run-script build
-    - stage: Unit Test
+    - stage: Test
       script:
         - npm test -- --coverage --watchAll=false
         - npm i -g codecov
@@ -29,10 +39,7 @@ jobs:
         - echo 'deploy me'
 
 stages:
-  - name: Install
-  - name: Lint
-  - name: Build
-  - name: UnitTest
+  - name: Test
     # require the type to be a PR
     if: type = pull_request
   - name: Deploy
