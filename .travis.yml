@@ -24,7 +24,8 @@ jobs:
         - docker build .
     - stage: Deploy
       script:
-        - echo 'deploy me'
+        - docker build . -t spotypop/kitty_hash_ui
+        - docker push spotypop/kitty_hash_ui
 
 stages:
   - name: Test
