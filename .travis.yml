@@ -24,8 +24,9 @@ jobs:
         - docker build .
     - stage: Deploy
       script:
-        - docker build . -t spotypop/kitty_hash_ui
-        - docker push spotypop/kitty_hash_ui
+        - docker build . -t spotypop/kitty_hash_ui:$TRAVIS_BUILD_NUMBER
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - docker push spotypop/kitty_hash_ui:$TRAVIS_BUILD_NUMBER
 
 stages:
   - name: Test
