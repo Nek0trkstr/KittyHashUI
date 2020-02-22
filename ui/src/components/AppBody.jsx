@@ -28,7 +28,7 @@ class AppBody extends React.Component {
       currentlyListening: 0,
     };
     this.pollingInterval = 5000;
-    this.radioMetadataURL = `http://${window.location.hostname}/status-json.xsl`;
+    this.radioMetadataURL = `https://${window.location.hostname}/status-json.xsl`;
     this.pollMetaFromStreamServer = this.pollMetaFromStreamServer.bind(this);
   }
 

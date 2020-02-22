@@ -9,7 +9,7 @@ class Player extends React.Component {
     this.state = {
       isPlaying: false,
     };
-    this.radioURL = `http://${window.location.hostname}/basic-radio`;
+    this.radioURL = `https://${window.location.hostname}/basic-radio`;
     this.audioController = new Audio(this.radioURL);
     this.playStream = this.playStream.bind(this);
     this.stopStream = this.stopStream.bind(this);
