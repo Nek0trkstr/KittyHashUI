@@ -32,6 +32,12 @@ stages:
   - name: Test
     # require the type to be a PR
     if: type = pull_request
+  - name: Build
+    # require the type to be a PR
+    if: type = pull_request
+  - name: Test Docker
+    # require the type to be a PR
+    if: type = pull_request
   - name: Deploy
     # require the type to be push to master
     if: type = push AND branch = master

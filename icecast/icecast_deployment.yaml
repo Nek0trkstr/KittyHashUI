@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: icecast-deployment
+  labels:
+    app: icecast
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: icecast
+  template:
+    metadata:
+      labels:
+        app: icecast
+    spec:
+      containers:
+      - name: icecast
+        image: infiniteproject/icecast:latest
+        env:
+        - name: ICECAST_SOURCE_PASSWORD
+          value: hackme
+        - name: ICECAST_ADMIN_USERNAME
+          value: admin
+        - name: ICECAST_ADMIN_PASSWORD
+          value: passw0rd
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+      imagePullSecrets:
+        - name: regcred

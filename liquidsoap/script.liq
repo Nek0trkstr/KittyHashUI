@@ -1,7 +1,7 @@
 
-myplaylist = playlist("playlist.pls")
+myplaylist = playlist("/music/playlist.pls")
 # If something goes wrong, we'll play this
-security = single("./music/Booty Swing.mp3")
+security = single("/fallback/Better_Days.mp3")
 
 # Start building the feed with music
 radio = myplaylist

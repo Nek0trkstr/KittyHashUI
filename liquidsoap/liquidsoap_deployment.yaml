@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: liquidsoap-deployment
+  labels:
+    app: liquidsoap
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: liquidsoap
+  template:
+    metadata:
+      labels:
+        app: liquidsoap
+    spec:
+      containers:
+      - name: liquidsoap
+        image: spotypop/kitty_hash_liquidsoap:stable
+        args: ["/script/script.liq"]
+        imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: "/music"
+          name: my-do-volume
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+      imagePullSecrets:
+        - name: regcred
+      volumes:
+      - name: my-do-volume
+        persistentVolumeClaim:
+          claimName: lofi-music-pvc

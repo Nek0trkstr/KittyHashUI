@@ -11,11 +11,10 @@ services:
     ports:
     - "3000:80"
   liquidsoap:
-    image: phasecorex/liquidsoap:latest
-    command: ["/playlist/script.liq"]
+    image: spotypop/kitty_hash_liquidsoap:stable
+    command: ["/script/script.liq"]
     volumes:
-    - /Users/shebeko/Music/liquidsoap/:/music:ro
-    - ./liquidsoap/:/playlist/:ro
+    - /Users/shebeko/Music/liquidsoap/lofi:/music:ro
     environment:
     - TZ=Israel/Jerusalem
   icecast:
