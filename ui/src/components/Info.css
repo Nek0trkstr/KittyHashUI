@@ -24,15 +24,6 @@
     margin: 0 0 0 20px;
 }
 
-@keyframes fadein {
-    from { 
-      opacity: 0; 
-    }
-    to { 
-      opacity: 0.75; 
-    }
-}
-
 @keyframes moveIn {
   from { 
     transform: translateX(-30px);

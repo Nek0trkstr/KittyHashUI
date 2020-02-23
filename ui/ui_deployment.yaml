@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ui
-        image: spotypop/kitty_hash_ui:54
+        image: spotypop/kitty_hash_ui:60
         ports:
         - containerPort: 80
         resources:

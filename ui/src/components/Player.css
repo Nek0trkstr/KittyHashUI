@@ -16,7 +16,7 @@
     position: relative;
     border: none;
     font-family: inherit;
-    animation: playMusic 10s infinite ease-in-out;
+    animation: playMusic 7s infinite ease-in-out;
     animation-play-state: paused;
 }
 
