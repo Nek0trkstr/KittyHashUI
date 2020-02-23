@@ -11,3 +11,12 @@
     text-align: right;
     animation: 1.2s ease-in 0s fadein; 
 }
+
+@keyframes fadein {
+    from { 
+      opacity: 0; 
+    }
+    to { 
+      opacity: 0.75; 
+    }
+}

@@ -30,9 +30,18 @@ class Player extends React.Component {
   render() {
     const { songTitle, songArtist } = this.props;
     const { isPlaying } = this.state;
+    const animationPlayState = isPlaying ? 'running' : 'paused';
     return (
       <div className="player">
-        <button id="playButton" aria-label="Play Button" type="button" onClick={isPlaying ? this.stopStream : this.playStream}><i className={isPlaying ? 'fas fa-pause fa-7x' : 'fas fa-play fa-7x'} /></button>
+        <button
+          id="playButton"
+          aria-label="Play Button"
+          type="button"
+          onClick={isPlaying ? this.stopStream : this.playStream}
+          style={{ animationPlayState }}
+        >
+          <i className={isPlaying ? 'fas fa-pause fa-7x' : 'fas fa-play fa-7x'} />
+        </button>
         <h1 id="songTitle">{songTitle}</h1>
         <h2 id="songArtist">{songArtist}</h2>
       </div>

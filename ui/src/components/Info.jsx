@@ -22,7 +22,7 @@ class Info extends React.Component {
           <h2 id="brandName">KittyHash</h2>
           <h2 id="brandSlogan">Listen to music - help nature</h2>
         </div>
-        <AnimatedText textToDisplay={this.activeButtonToElement[textToDisplay]} />
+        <AnimatedText key={Date.now()} textToDisplay={this.activeButtonToElement[textToDisplay]} />
       </div>
     );
   }
