@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Info from './Info';
 import Player from './Player';
 import Counter from './Counter';
 import './AppBody.css';
@@ -52,20 +50,14 @@ class AppBody extends React.Component {
   }
 
   render() {
-    const { textToDisplay } = this.props;
     const { currentlyListening, songArtist, songTitle } = this.state;
     return (
       <div id="appBody">
-        <Info textToDisplay={textToDisplay} />
         <Player songArtist={songArtist} songTitle={songTitle} />
         <Counter currentlyListening={currentlyListening} />
       </div>
     );
   }
 }
-
-AppBody.propTypes = {
-  textToDisplay: PropTypes.symbol.isRequired,
-};
 
 export default AppBody;
