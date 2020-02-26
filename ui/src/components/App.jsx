@@ -3,6 +3,7 @@ import NavBar from './NavBar';
 import AppBody from './AppBody';
 import Modal from './Modal';
 import TextType from '../TextTypeEnum';
+import Info from './Info';
 import './App.css';
 
 class App extends React.Component {
@@ -30,7 +31,8 @@ class App extends React.Component {
       <div className="App">
         <Modal userConsentGiven={userConsentGiven} handleClick={this.userConsentClick} />
         <NavBar textToDisplay={textToDisplay} handleMenuClick={this.menuClick} />
-        <AppBody textToDisplay={textToDisplay} />
+        <Info textToDisplay={textToDisplay} />
+        <AppBody />
       </div>
     );
   }
