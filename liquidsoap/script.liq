@@ -11,5 +11,5 @@ radio = fallback(track_sensitive = false, [radio, security])
 # Stream it out
 output.icecast(%mp3,
   host = "icecast", port = 8000,
-  password = "hackme", mount = "basic-radio",
+  password = getenv("ICECAST_SOURCE_PASSWORD"), mount = getenv("ICECAST_MOUNT_NAME"),
   radio)

@@ -18,6 +18,14 @@ spec:
       - name: liquidsoap
         image: spotypop/kitty_hash_liquidsoap:stable
         args: ["/script/script.liq"]
+        env:
+        - name: ICECAST_SOURCE_PASSWORD
+          valueFrom:
+              secretKeyRef:
+                name: icecastsource
+                key: ICECAST_SOURCE_PASSWORD
+        - name: ICECAST_MOUNT_NAME
+          value: basic-radio
         imagePullPolicy: Always
         volumeMounts:
         - mountPath: "/music"

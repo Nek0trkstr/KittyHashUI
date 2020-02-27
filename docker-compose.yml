@@ -11,12 +11,15 @@ services:
     ports:
     - "3000:80"
   liquidsoap:
+    build: ./liquidsoap
     image: spotypop/kitty_hash_liquidsoap:stable
     command: ["/script/script.liq"]
     volumes:
     - /Users/shebeko/Music/liquidsoap/lofi:/music:ro
     environment:
     - TZ=Israel/Jerusalem
+    - ICECAST_SOURCE_PASSWORD=hackme
+    - ICECAST_MOUNT_NAME=basic-radio
   icecast:
     image: infiniteproject/icecast:latest
     environment:
@@ -24,3 +27,5 @@ services:
     - ICECAST_SOURCE_PASSWORD=hackme
     - ICECAST_ADMIN_USERNAME=admin
     - ICECAST_ADMIN_PASSWORD=passw0rd
+    ports:
+    - "8000:8000"

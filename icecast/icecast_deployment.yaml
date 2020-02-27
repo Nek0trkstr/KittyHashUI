@@ -17,13 +17,23 @@ spec:
       containers:
       - name: icecast
         image: infiniteproject/icecast:latest
+
         env:
         - name: ICECAST_SOURCE_PASSWORD
-          value: hackme
+          valueFrom:
+              secretKeyRef:
+                name: icecastsource
+                key: ICECAST_SOURCE_PASSWORD
         - name: ICECAST_ADMIN_USERNAME
-          value: admin
+          valueFrom:
+              secretKeyRef:
+                name: icecastadmin
+                key: ICECAST_ADMIN_USERNAME
         - name: ICECAST_ADMIN_PASSWORD
-          value: passw0rd
+          valueFrom:
+              secretKeyRef:
+                name: icecastadmin
+                key: ICECAST_ADMIN_PASSWORD
         resources:
           requests:
             memory: "256Mi"
@@ -31,5 +41,16 @@ spec:
           limits:
             memory: "512Mi"
             cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /status-json.xsl
+            port: 8000
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /status-json.xsl
+            port: 8000
+          periodSeconds: 1
+
       imagePullSecrets:
         - name: regcred
