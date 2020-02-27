@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ui
-        image: spotypop/kitty_hash_ui:60
+        image: spotypop/kitty_hash_ui:67
         ports:
         - containerPort: 80
         resources:
@@ -26,5 +26,16 @@ spec:
           limits:
             memory: "256Mi"
             cpu: "500m"
+        
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          periodSeconds: 1
       imagePullSecrets:
         - name: regcred
