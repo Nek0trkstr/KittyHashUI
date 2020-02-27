@@ -29,9 +29,6 @@ jobs:
         - docker push spotypop/kitty_hash_ui:$TRAVIS_BUILD_NUMBER
 
 stages:
-  - name: Test
-    # require the type to be a PR
-    if: type = pull_request
   - name: Build
     # require the type to be a PR
     if: type = pull_request
