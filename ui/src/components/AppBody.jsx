@@ -1,6 +1,7 @@
 import React from 'react';
 import Player from './Player';
 import Counter from './Counter';
+import Parser from '../metadataParser';
 import './AppBody.css';
 
 class AppBody extends React.Component {
@@ -38,7 +39,7 @@ class AppBody extends React.Component {
   pollMetaFromStreamServer() {
     fetch(this.radioMetadataURL)
       .then((res) => res.json())
-      .then((jsonMetadata) => this.constructor.parseMetadata(jsonMetadata))
+      .then((jsonMetadata) => Parser.parseMetadata(jsonMetadata))
       .then((parsedData) => {
         this.setState({
           songTitle: parsedData.songTitle,

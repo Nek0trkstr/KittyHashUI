@@ -15,15 +15,15 @@ class App extends React.Component {
       textToDisplay: TextType.ABOUT,
       userConsentGiven: (cookies.get('userConsent') === 'true'),
     };
-    this.menuClick = this.menuClick.bind(this);
-    this.userConsentClick = this.userConsentClick.bind(this);
+    this.menuClickHandler = this.menuClickHandler.bind(this);
+    this.userConsentClickHandler = this.userConsentClickHandler.bind(this);
   }
 
-  menuClick(textToDisplay) {
+  menuClickHandler(textToDisplay) {
     this.setState({ textToDisplay });
   }
 
-  userConsentClick() {
+  userConsentClickHandler() {
     const cookies = new Cookies();
     const date = new Date();
     cookies.set('userConsent', true, { path: '/', expires: new Date(date.setMonth(date.getMonth() + 1)) });
@@ -34,8 +34,8 @@ class App extends React.Component {
     const { textToDisplay, userConsentGiven } = this.state;
     return (
       <div className="App">
-        <Modal userConsentGiven={userConsentGiven} handleClick={this.userConsentClick} />
-        <NavBar textToDisplay={textToDisplay} handleMenuClick={this.menuClick} />
+        <Modal userConsentGiven={userConsentGiven} handleClick={this.userConsentClickHandler} />
+        <NavBar textToDisplay={textToDisplay} handleMenuClick={this.menuClickHandler} />
         <Info textToDisplay={textToDisplay} />
         <AppBody />
       </div>
