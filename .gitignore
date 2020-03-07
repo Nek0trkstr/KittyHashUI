@@ -63,3 +63,5 @@ typings/
 
 # kubernetes secrets
 *secret.yaml
+
+.terraform
