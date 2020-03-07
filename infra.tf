@@ -1,9 +1,10 @@
 # Set the variable value in *.tfvars file
 # or using -var="do_token=..." CLI option
+variable "do_token" {}
 
 # Configure the DigitalOcean Provider
 provider "digitalocean" {
-  token = "4063c0206029bd7755ddb9118c9fc3b0ae4dacfe4314d446f76ad81a702cfebd"
+  token = var.do_token
 }
 
 data "digitalocean_ssh_key" "pubkey" {
