@@ -3,8 +3,9 @@ kind: Service
 metadata:
   name: icecast
 spec:
+  type: {{ .Values.icecast.service.type }}
   selector:
     app: icecast
   ports:
     - protocol: TCP
-      port: 8000
+      port: {{ .Values.icecast.service.port }}

@@ -5,7 +5,7 @@ metadata:
   labels:
     app: icecast
 spec:
-  replicas: 1
+  replicas: {{ .Values.icecast.replicaCount }}
   selector:
     matchLabels:
       app: icecast
@@ -16,14 +16,13 @@ spec:
     spec:
       containers:
       - name: icecast
-        image: infiniteproject/icecast:latest
-
+        image: infiniteproject/icecast:{{ .Values.icecast.version }}
         env:
         - name: ICECAST_SOURCE_PASSWORD
           valueFrom:
-              secretKeyRef:
-                name: icecastsource
-                key: ICECAST_SOURCE_PASSWORD
+            secretKeyRef:
+              name: icecastsource
+              key: ICECAST_SOURCE_PASSWORD
         - name: ICECAST_ADMIN_USERNAME
           valueFrom:
               secretKeyRef:
@@ -53,4 +52,4 @@ spec:
           periodSeconds: 1
 
       imagePullSecrets:
-        - name: regcred
+        - name: {{ .Values.imagePullSecret }}
