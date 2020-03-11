@@ -77,6 +77,13 @@ icecast:
     type: ClusterIP
     port: 8000
   
+liquidsoap:
+  replicaCount: 1
+  version: stable
+
+pvc:
+  enabled: false
+
 icecast_source_password:
   valueFrom:
     secretKeyRef:
